@@ -1,0 +1,46 @@
+{
+  "name": "forever-monitor",
+  "description": "Core forever process monitor",
+  "version": "0.0.0",
+  "author": "Nodejitsu Inc <info@nodejitsu.com>",
+  "contributors": [
+    { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
+    { "name": "Fedor Indutny", "email": "fedor.indutny@gmail.com" },
+    { "name": "James Halliday", "email": "mail@substack.net" },
+    { "name": "Bradley Meck", "email": "bradley@nodejitsu.com" },
+    { "name": "Dominic Tarr", "email": "dominic@nodejitsu.com" },
+    { "name": "Maciej Małecki", "email": "maciej@nodejitsu.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/nodejitsu/forever-monitor.git"
+  },
+  "keywords": [
+    "cli",
+    "fault tolerant",
+    "sysadmin",
+    "tools"
+  ],
+  "dependencies": {
+    "broadway": "0.1.x",
+    "minimatch": "0.0.x",
+    "pkginfo": "0.x.x",
+    "ps-tree": "0.0.x",
+    "timespan": "2.0.x",
+    "watch": "0.5.x",
+    "utile": "0.0.x",
+    "winston": "0.6.x"
+  },
+  "devDependencies": {
+    "eventemitter2": "0.4.x",
+    "request": "2.x.x",
+    "vows": "0.6.x"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "vows test/**/*-test.js --spec -i"
+  },
+  "engines": {
+    "node": ">= 0.8.1"
+  }
+}
