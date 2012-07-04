@@ -13,3 +13,7 @@ results
 
 node_modules
 npm-debug.log
+
+test/*.log
+.*.sw[op]
+test/fixtures/*.log
