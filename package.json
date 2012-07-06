@@ -29,6 +29,7 @@
     "utile": "0.0.x"
   },
   "devDependencies": {
+    "optimist": "0.3.x",
     "vows": "0.6.x"
   },
   "main": "./lib/index.js",
