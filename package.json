@@ -22,18 +22,14 @@
     "tools"
   ],
   "dependencies": {
-    "broadway": "0.1.x",
+    "broadway": "0.2.x",
     "minimatch": "0.0.x",
     "pkginfo": "0.x.x",
     "ps-tree": "0.0.x",
-    "timespan": "2.0.x",
     "watch": "0.5.x",
-    "utile": "0.0.x",
-    "winston": "0.6.x"
+    "utile": "0.0.x"
   },
   "devDependencies": {
-    "eventemitter2": "0.4.x",
-    "request": "2.x.x",
     "vows": "0.6.x"
   },
   "main": "./lib/index.js",

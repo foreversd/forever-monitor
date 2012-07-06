@@ -12,7 +12,7 @@ var assert = require('assert'),
     vows = require('vows'),
     fmonitor = require('../../lib');
 
-vows.describe('forever-monitor/monitor/watch').addBatch({
+vows.describe('forever-monitor/plugins/watch').addBatch({
   'When using forever with watch enabled': {
     'forever should': {
       topic: fmonitor.start('daemon.js', {
