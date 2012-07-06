@@ -1,7 +1,7 @@
 {
   "name": "forever-monitor",
   "description": "Core forever process monitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "contributors": [
     { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
