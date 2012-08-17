@@ -74,7 +74,6 @@ There are several options that you should be aware of when using forever. Most o
     // All or nothing options passed along to `child_process.spawn`.
     //
     'spawnWith': {
-      env: process.env,        // Information passed along to the child process
       customFds: [-1, -1, -1], // that forever spawns.
       setsid: false
     },
