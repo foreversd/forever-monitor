@@ -79,6 +79,19 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal(buf.toString(), 'moo\n');
       }
     },
+    "passing node flags through command": {
+      topic: function () {
+        var child = fmonitor.start('test/fixtures/gc.js', {
+          command: 'node --expose-gc',
+          max: 1,
+          silent: true,
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should get back function": function (err, buf) {
+        assert.equal(buf.toString(), 'function\n');
+      }
+    },
     "attempting to start a script that doesn't exist": {
       topic: function () {
         var child = fmonitor.start('invalid-path.js', {
