@@ -10,6 +10,7 @@
     { "name": "Bradley Meck", "email": "bradley@nodejitsu.com" },
     { "name": "Dominic Tarr", "email": "dominic@nodejitsu.com" },
     { "name": "Maciej Małecki", "email": "maciej@nodejitsu.com" }
+    { "name": "Brett Paden", "email": "brettpaden@gmail.com" }
   ],
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
     "pkginfo": "0.x.x",
     "ps-tree": "0.0.x",
     "watch": "0.5.x",
-    "utile": "0.1.x"
+    "utile": "0.1.x",
+	"strftime": "0.4.x"
   },
   "devDependencies": {
     "optimist": "0.3.x",
