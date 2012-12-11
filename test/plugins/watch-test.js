@@ -66,6 +66,15 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
             ).split("\n")
           );
         }
+      },
+      'when file in ignored dir is updated': {
+        topic: function (child) {
+          child.once('watch:ignore', this.callback);
+          fs.writeFileSync(path.join(__dirname, '..', 'fixtures', 'watch', 'ignore_newFile'), '');
+        },
+        'do nothing': function (child, _) {
+          fs.unlinkSync(path.join(__dirname, '..', 'fixtures', 'watch', 'ignore_newFile'));
+        }
       }
     }
   }

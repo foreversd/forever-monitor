@@ -1,3 +1,4 @@
 console.log('Hello!');
-setTimeout(process.exit, 2000);
+//timeout should be large enough to stay alive during the test
+setTimeout(process.exit, 20000);
 
