@@ -69,7 +69,9 @@ vows.describe('forever-monitor/monitor/spawn-options').addBatch({
       },
       "setting `hideEnv` when spawning all-env-vars.js": {
         topic: function () {
-          var that = this, child;
+          var that = this, 
+              all = '',
+              child;
 
           this.hideEnv = [
             'USER',
@@ -84,7 +86,10 @@ vows.describe('forever-monitor/monitor/spawn-options').addBatch({
           });
 
           child.on('stdout', function (data) {
-            that.env = Object.keys(JSON.parse(data.toString()));
+            all += data;
+            
+            try { that.env = Object.keys(JSON.parse(all)); }
+            catch (ex) { }
           });
 
           child.on('exit', this.callback.bind(this, null));
