@@ -1,11 +1,11 @@
-process.on('SIGTERM',function() {
+process.on('SIGTERM',function () {
   console.log('received SIGTERM');
-  setTimeout(function() {
+  setTimeout(function () {
     console.log('Exiting after some time.');
     process.exit(0);
   }, 1000);
 });
 
-setInterval(function(){
+setInterval(function (){
   console.log('Heartbeat');
 }, 100);

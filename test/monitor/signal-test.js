@@ -34,7 +34,7 @@ vows.describe('forever-monitor/monitor/signal').addBatch({
             //
             // Give it time to set up signal handlers
             //
-            setTimeout(function() {
+            setTimeout(function () {
               child.stop();
             }, 1000);
           });
@@ -70,7 +70,7 @@ vows.describe('forever-monitor/monitor/signal').addBatch({
               //
               // Give it time to set up signal handlers
               //
-              setTimeout(function() {
+              setTimeout(function () {
                 child.stop();
               }, 1000);
             });
