@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "broadway": "0.2.x",
-    "minimatch": "0.0.x",
+    "minimatch": "0.2.x",
     "pkginfo": "0.x.x",
     "ps-tree": "0.0.x",
     "watch": "0.5.x",
