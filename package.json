@@ -1,7 +1,7 @@
 {
   "name": "forever-monitor",
   "description": "Core forever process monitor",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "contributors": [
     { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
@@ -37,6 +37,6 @@
     "test": "vows test/**/*-test.js --spec -i"
   },
   "engines": {
-    "node": "0.8.x"
+    "node": ">= 0.8.x"
   }
 }

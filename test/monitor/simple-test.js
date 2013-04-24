@@ -79,6 +79,20 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal(buf.toString(), 'moo\n');
       }
     },
+    "passing node flags through command": {
+      topic: function () {
+        var child = fmonitor.start('test/fixtures/gc.js', {
+          command: 'node --expose-gc',
+          max: 1,
+          silent: true,
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should get back function": function (err, buf) {
+        assert.isNull(err);
+        assert.equal('' + buf, 'function\n');
+      }
+    },
     "attempting to start a script that doesn't exist": {
       topic: function () {
         var child = fmonitor.start('invalid-path.js', {
@@ -90,6 +104,20 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
       "should throw an error about the invalid file": function (err) {
         assert.isNotNull(err);
         assert.isTrue(err.message.indexOf('does not exist') !== -1);
+      }
+    },
+    "attempting to start a command with `node` in the name": {
+      topic: function () {
+        var child = fmonitor.start('sample-script.js', {
+          command: path.join(__dirname, '..', 'fixtures', 'testnode'),
+          silent: true,
+          max: 1
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should run the script": function (err, buf) {
+        assert.isNull(err);
+        assert.equal('' + buf, 'sample-script.js');
       }
     }
   }

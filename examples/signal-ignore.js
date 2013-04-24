@@ -3,6 +3,6 @@ function noop() {
 }
 process.on('SIGTERM',noop);
 process.on('SIGINT',noop);
-setInterval(function(){
+setInterval(function (){
   console.log('heartbeat');
 }, 100);
