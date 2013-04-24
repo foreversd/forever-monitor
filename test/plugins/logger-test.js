@@ -16,6 +16,10 @@ function checkLogOutput(file, stream, expectedLength) {
   });
 }
 
+function checkFileExists(file) {
+  assert.isTrue(fs.existsSync(file), file+" exists");
+}
+
 vows.describe('forever-monitor/plugins/logger').addBatch({
   'When using the logger plugin': {
     'with custom log files': {
@@ -73,6 +77,54 @@ vows.describe('forever-monitor/plugins/logger').addBatch({
       'log files should not be truncated': function (err) {
         checkLogOutput('logs-stdout.log', 'stdout', 40);
         checkLogOutput('logs-stderr.log', 'stderr', 40);
+      }
+    }
+  }
+}).addBatch({
+  'When using the logger plugin': {
+    'with custom log files and sending custom exit code': {
+      topic: function () {
+        var currentLog = path.join(fixturesDir, 'reopen-logs-fever.log');
+        var currentOut = path.join(fixturesDir, 'reopen-logs-stdout.log');
+        var currentErr = path.join(fixturesDir, 'reopen-logs-stderr.log');
+
+        // var rotatedLog = path.join(fixturesDir, 'reopen-logs-fever_rotated.log');
+        // var rotatedOut = path.join(fixturesDir, 'reopen-logs-stdout_rotated.log');
+        // var rotatedErr = path.join(fixturesDir, 'reopen-logs-stderr_rotated.log');
+
+        var monitor = new fmonitor.Monitor(path.join(fixturesDir, 'reopen-logs.js'), {
+          max: 3,
+          silent: true,
+          append: true,
+          logFile: currentLog,
+          outFile: currentOut,
+          errFile: currentErr
+        });
+
+        monitor.start();
+
+        var childPid = monitor.data.pid;
+
+        monitor.on("reopenLogs", this.callback.bind({}, null));
+
+        setTimeout(function() {
+          process.kill(childPid, "SIGUSR2");
+          // fs.rename(currentLog, rotatedLog, function() {
+          //   fs.rename(currentOut, rotatedOut, function() {
+          //     fs.rename(currentErr, rotatedErr, function() {
+          //     });
+          //   });
+          // });
+        }, 100);
+      },
+      'reopenLogs event should be emitted': function (topic) {
+        assert.isTrue(true);
+        // checkFileExists('reopen-logs-fever.log');
+        // checkFileExists('reopen-logs-fever_rotated.log');
+        // checkFileExists('reopen-logs-stdout.log');
+        // checkFileExists('reopen-logs-stdout-stdout_rotated.log');
+        // checkFileExists('reopen-logs-stderr.log');
+        // checkFileExists('reopen-logs-stderr_rotated.log');
       }
     }
   }
