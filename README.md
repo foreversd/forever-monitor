@@ -105,6 +105,26 @@ Each forever object is an instance of the node.js core EventEmitter. There are s
 * **stdout**  _[data]:_            Raised when data is received from the child process' stdout
 * **stderr**  _[data]:_            Raised when data is received from the child process' stderr
 
+### Typical console output
+
+When running the forever CLI tool, it produces debug outputs about which files have changed / how processes exited / etc. To get a similar behaviour with `forever-monitor`, add the following event listeners:
+
+```js
+var child = new (forever.Monitor)('your-filename.js');
+
+child.on('watch:restart', function(info) {
+    console.error('Restaring script because ' + info.file + ' changed');
+});
+
+child.on('restart', function() {
+    console.error('Forever restarting script for ' + child.times + ' time');
+});
+
+child.on('exit:code', function(code) {
+    console.error('Forever detected script exited with code ' + code);
+});
+```
+
 ## Installation
 
 ``` bash
