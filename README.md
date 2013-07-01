@@ -66,7 +66,7 @@ There are several options that you should be aware of when using forever. Most o
     // Options for restarting on watched files.
     //
     'watch': false              // Value indicating if we should watch files.
-    'watchIgnoreDotFiles': null // Dot files we should read to ignore ('.foreverignore', etc).
+    'watchIgnoreDotFiles': null // Whether to ignore file starting with a '.'
     'watchIgnorePatterns': null // Ignore patterns to use when watching files.
     'watchDirectory': null      // Top-level directory to watch from.
     
