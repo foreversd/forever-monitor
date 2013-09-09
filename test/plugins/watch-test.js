@@ -18,12 +18,17 @@ var watchDir = fs.realpathSync(path.join(__dirname, '..', 'fixtures', 'watch')),
 vows.describe('forever-monitor/plugins/watch').addBatch({
   'When using forever with watch enabled': {
     'forever should': {
-      topic: fmonitor.start('daemon.js', {
-        silent: true,
-        options: ['-p', '8090'],
-        watch: true,
-        sourceDir: path.join(__dirname, '..', 'fixtures', 'watch')
-      }),
+      topic: function () {
+        var cb = this.callback,
+            monitor = fmonitor.start('daemon.js', {
+              silent: true,
+              options: ['-p', '8090'],
+              watch: true,
+              sourceDir: path.join(__dirname, '..', 'fixtures', 'watch')
+            }).on('watch:start', function () {
+              cb(null, monitor);
+            });
+      },
       'have correct options set': function (child) {
         monitor = child;
         assert.isTrue(child.watchIgnoreDotFiles);
