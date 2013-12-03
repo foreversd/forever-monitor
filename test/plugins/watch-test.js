@@ -31,13 +31,15 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
       },
       'read .foreverignore file': {
         'and store ignore patterns': function (child) {
-          assert.deepEqual(
-            child.watchIgnorePatterns,
-            fs.readFileSync(
-              path.join(watchDir, '.foreverignore'),
-              'utf8'
-            ).split("\n").filter(Boolean)
-          );
+          setTimeout(function () {
+            assert.deepEqual(
+              child.watchIgnorePatterns,
+              fs.readFileSync(
+                path.join(watchDir, '.foreverignore'),
+                'utf8'
+              ).split("\n").filter(Boolean)
+            );
+          }, 100);
         }
       },
       'when file changes': {
