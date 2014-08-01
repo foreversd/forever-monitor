@@ -11,7 +11,7 @@ var assert = require('assert'),
     vows = require('vows'),
     fmonitor = require('../../lib');
 
-vows.describe('forever-monitor/monitor/spawn-options').addBatch({
+  vows.describe('forever-monitor/monitor/spawn-options').addBatch({
   "When using forever-monitor": {
     "an instance of Monitor with valid options": {
       "passing environment variables to env-vars.js": {
@@ -69,14 +69,28 @@ vows.describe('forever-monitor/monitor/spawn-options').addBatch({
       },
       "setting `hideEnv` when spawning all-env-vars.js": {
         topic: function () {
-          var that = this, 
+          var that = this,
               all = '',
+              confirmed,
               child;
 
           this.hideEnv = [
             'USER',
             'OLDPWD'
           ];
+
+          //
+          // Remark (indexzero): This may be a symptom of a larger bug.
+          // This test only fails when run under `npm test` (e.g. vows --spec -i).
+          //
+          function tryCallback() {
+            if (confirmed) {
+              return that.callback(null, child);
+            }
+
+            confirmed = true;
+          }
+
 
           child = new (fmonitor.Monitor)(path.join(__dirname, '..', '..', 'examples', 'all-env-vars.js'), {
             max: 1,
@@ -87,12 +101,13 @@ vows.describe('forever-monitor/monitor/spawn-options').addBatch({
 
           child.on('stdout', function (data) {
             all += data;
-            
+
             try { that.env = Object.keys(JSON.parse(all)); }
             catch (ex) { }
+            tryCallback();
           });
 
-          child.on('exit', this.callback.bind(this, null));
+          child.on('exit', tryCallback);
           child.start();
         },
         "should hide the environment variables passed to the child": function (err, child) {
