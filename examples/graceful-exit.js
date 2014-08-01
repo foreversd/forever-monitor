@@ -10,5 +10,5 @@ setInterval(function (){
   console.log('Heartbeat');
 }, 100);
 
-//run with: --killSignal
-//forever --killSignal=SIGTERM -w start server.js
+// run with: --killSignal
+// forever --killSignal=SIGTERM -w start server.js
