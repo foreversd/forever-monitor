@@ -93,6 +93,20 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal(buf.toString(), 'moo\n');
       }
     },
+    "non-node usage with undefined 'script' and with an 'options.command' field": {
+      topic: function () {
+        var child = fmonitor.start(undefined, {
+          command: 'perl -le',
+          options: ['print "moo"'],
+          max: 1,
+          silent: true,
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should get back moo": function (err, buf) {
+        assert.equal(buf.toString(), 'moo\n');
+      }
+    },
     "non-node usage with no 'script' nor 'options.command' fields": {
       topic: function() {
         try {new fmonitor.Monitor()}
