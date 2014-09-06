@@ -79,6 +79,45 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal(buf.toString(), 'moo\n');
       }
     },
+    "non-node usage with no 'script' and with an 'options.command' field": {
+      topic: function () {
+        var child = fmonitor.start({
+          command: 'perl -le',
+          options: ['print "moo"'],
+          max: 1,
+          silent: true,
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should get back moo": function (err, buf) {
+        assert.equal(buf.toString(), 'moo\n');
+      }
+    },
+    "non-node usage with undefined 'script' and with an 'options.command' field": {
+      topic: function () {
+        var child = fmonitor.start(undefined, {
+          command: 'perl -le',
+          options: ['print "moo"'],
+          max: 1,
+          silent: true,
+        });
+        child.on('stdout', this.callback.bind({}, null));
+      },
+      "should get back moo": function (err, buf) {
+        assert.equal(buf.toString(), 'moo\n');
+      }
+    },
+    "non-node usage with no 'script' nor 'options.command' fields": {
+      topic: function() {
+        try {new fmonitor.Monitor()}
+        catch(err) {return err}
+      },
+      "should throw an error requiring a script or command": function (err) {
+        assert.isNotNull(err);
+        assert.instanceOf(err, SyntaxError);
+        assert.isTrue(err.message.indexOf('must be defined') !== -1);
+      }
+    },
     "passing node flags through command": {
       topic: function () {
         var child = fmonitor.start('test/fixtures/gc.js', {

@@ -17,7 +17,7 @@ You can also use forever from inside your own node.js code.
   child.on('exit', function () {
     console.log('your-filename.js has exited after 3 restarts');
   });
-  
+
   child.start();
 ```
 
@@ -28,6 +28,17 @@ You can spawn non-node processes too. Either set the `command` key in the
 ``` js
   var forever = require('forever-monitor');
   var child = forever.start([ 'perl', '-le', 'print "moo"' ], {
+    max : 1,
+    silent : true
+  });
+```
+
+When setting the `command` key, you can ignore the first argument. This example is equivalent to the previous one:
+
+``` js
+  var forever = require('forever-monitor');
+  var child = forever.start({
+    command: 'perl -le print "moo"',
     max : 1,
     silent : true
   });
@@ -46,22 +57,22 @@ There are several options that you should be aware of when using forever. Most o
     'pidFile': 'path/to/a.pid', // Path to put pid information for the process(es) started
     'max': 10,                  // Sets the maximum number of times a given script should run
     'killTree': true            // Kills the entire child process tree on `exit`
-    
+
     //
     // These options control how quickly forever restarts a child process
     // as well as when to kill a "spinning" process
     //
     'minUptime': 2000,     // Minimum time a child process has to be up. Forever will 'exit' otherwise.
     'spinSleepTime': 1000, // Interval between restarts if a child is spinning (i.e. alive < minUptime).
-    
+
     //
-    // Command to spawn as well as options and other vars 
+    // Command to spawn as well as options and other vars
     // (env, cwd, etc) to pass along
     //
     'command': 'perl',         // Binary to run (default: 'node')
     'options': ['foo','bar'],  // Additional arguments to pass to the script,
     'sourceDir': 'script/path' // Directory that the source script is in
-    
+
     //
     // Options for restarting on watched files.
     //
@@ -69,7 +80,7 @@ There are several options that you should be aware of when using forever. Most o
     'watchIgnoreDotFiles': null // Whether to ignore file starting with a '.'
     'watchIgnorePatterns': null // Ignore patterns to use when watching files.
     'watchDirectory': null      // Top-level directory to watch from.
-    
+
     //
     // All or nothing options passed along to `child_process.spawn`.
     //
@@ -77,14 +88,14 @@ There are several options that you should be aware of when using forever. Most o
       customFds: [-1, -1, -1], // that forever spawns.
       setsid: false
     },
-    
+
     //
-    // More specific options to pass along to `child_process.spawn` which 
+    // More specific options to pass along to `child_process.spawn` which
     // will override anything passed to the `spawnWith` option
     //
     'env': { 'ADDITIONAL': 'CHILD ENV VARS' }
     'cwd': '/path/to/child/working/directory'
-    
+
     //
     // Log files and associated logging options for this instance
     //
