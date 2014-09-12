@@ -42,10 +42,10 @@ There are several options that you should be aware of when using forever. Most o
     // Basic configuration options
     //
     'silent': false,            // Silences the output from stdout and stderr in the parent process
-    'uid': 'your-UID'           // Custom uid for this forever process. (default: autogen)
+    'uid': 'your-UID',          // Custom uid for this forever process. (default: autogen)
     'pidFile': 'path/to/a.pid', // Path to put pid information for the process(es) started
     'max': 10,                  // Sets the maximum number of times a given script should run
-    'killTree': true            // Kills the entire child process tree on `exit`
+    'killTree': true,           // Kills the entire child process tree on `exit`
     
     //
     // These options control how quickly forever restarts a child process
@@ -60,15 +60,15 @@ There are several options that you should be aware of when using forever. Most o
     //
     'command': 'perl',         // Binary to run (default: 'node')
     'options': ['foo','bar'],  // Additional arguments to pass to the script,
-    'sourceDir': 'script/path' // Directory that the source script is in
+    'sourceDir': 'script/path',// Directory that the source script is in
     
     //
     // Options for restarting on watched files.
     //
-    'watch': true              // Value indicating if we should watch files.
-    'watchIgnoreDotFiles': null // Whether to ignore file starting with a '.'
-    'watchIgnorePatterns': null // Ignore patterns to use when watching files.
-    'watchDirectory': null      // Top-level directory to watch from.
+    'watch': true,               // Value indicating if we should watch files.
+    'watchIgnoreDotFiles': null, // Whether to ignore file starting with a '.'
+    'watchIgnorePatterns': null, // Ignore patterns to use when watching files.
+    'watchDirectory': null,      // Top-level directory to watch from.
     
     //
     // All or nothing options passed along to `child_process.spawn`.
@@ -82,8 +82,8 @@ There are several options that you should be aware of when using forever. Most o
     // More specific options to pass along to `child_process.spawn` which 
     // will override anything passed to the `spawnWith` option
     //
-    'env': { 'ADDITIONAL': 'CHILD ENV VARS' }
-    'cwd': '/path/to/child/working/directory'
+    'env': { 'ADDITIONAL': 'CHILD ENV VARS' },
+    'cwd': '/path/to/child/working/directory',
     
     //
     // Log files and associated logging options for this instance
