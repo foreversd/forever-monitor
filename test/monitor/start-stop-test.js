@@ -1,5 +1,5 @@
 /*
- * simple-test.js: Simple tests for using Monitor instances.
+ * start-stop-test.js: Start/Stop tests for using Monitor instances.
  *
  * (C) 2010 Nodejitsu Inc.
  * MIT LICENCE
@@ -38,20 +38,23 @@ vows.describe('forever-monitor/monitor/start-stop').addBatch({
           var that = this;
           timer = setTimeout(function () {
             that.callback(new Error('Child did not die when killed by forever'), child);
-          }, 6000);
+          }, 8000);
           
           process.on('uncaughtException', function(err) {
-            console.log('Caught exception: ' + err);
+            that.callback(err, child)
           });
 
-          setTimeout(function(){
-            child.stop();
-            setTimeout(function(){
-              child.restart();
-            }, 1000)
-          }, 2000)
-
           child.start();
+          setTimeout(function() {
+            child.stop();
+            setTimeout(function() {
+              child.restart();
+              child.once("restart", function(){
+                child.stop()
+              })
+              child.once("exit", function(){ that.callback(null, child) })
+            }, 2000);
+          }, 1000);
         },
         "should restart the child process": function (err, child) {
           assert.isNull(err)
