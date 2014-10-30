@@ -11,7 +11,7 @@ You can also use forever from inside your own node.js code.
   var child = new (forever.Monitor)('your-filename.js', {
     max: 3,
     silent: true,
-    options: []
+    args: []
   });
 
   child.on('exit', function () {
@@ -59,7 +59,7 @@ There are several options that you should be aware of when using forever. Most o
     // (env, cwd, etc) to pass along
     //
     'command': 'perl',         // Binary to run (default: 'node')
-    'options': ['foo','bar'],  // Additional arguments to pass to the script,
+    'args':    ['foo','bar'],  // Additional arguments to pass to the script,
     'sourceDir': 'script/path',// Directory that the source script is in
 
     //

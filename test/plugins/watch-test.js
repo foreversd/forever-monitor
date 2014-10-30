@@ -20,7 +20,7 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
     'forever should': {
       topic: fmonitor.start('daemon.js', {
         silent: true,
-        options: ['-p', '8090'],
+        args: ['-p', '8090'],
         watch: true,
         sourceDir: path.join(__dirname, '..', 'fixtures', 'watch')
       }),

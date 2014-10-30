@@ -20,7 +20,7 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
       topic: new (fmonitor.Monitor)(path.join(examplesDir, 'server.js'), {
         max: 10,
         silent: true,
-        options: ['-p', 8090]
+        args: ['-p', 8090]
       }),
       "should have correct properties set": function (child) {
         assert.isArray(child.args);
@@ -53,7 +53,7 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         silent: true,
         outFile: 'test/fixtures/stdout.log',
         errFile: 'test/fixtures/stderr.log',
-        options: []
+        args: []
       }
     ),
     "running error-on-timer sample once": macros.assertTimes(
@@ -64,7 +64,7 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         silent: true,
         outFile: 'test/fixtures/stdout.log',
         errFile: 'test/fixtures/stderr.log',
-        options: []
+        args: []
       }
     ),
     "non-node usage with a perl one-liner": {
