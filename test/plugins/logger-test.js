@@ -20,7 +20,10 @@ vows.describe('forever-monitor/plugins/logger').addBatch({
   'When using the logger plugin': {
     'with custom log files': {
       topic: function () {
-        var outlogs, errlogs, monitor;
+        var that = this,
+            outlogs,
+            errlogs,
+            monitor;
 
         monitor = new fmonitor.Monitor(path.join(fixturesDir, 'logs.js'), {
           max: 1,
@@ -29,7 +32,9 @@ vows.describe('forever-monitor/plugins/logger').addBatch({
           errFile: path.join(fixturesDir, 'logs-stderr.log')
         });
 
-        monitor.on('exit', this.callback.bind({}, null));
+        monitor.on('exit', function () {
+          setTimeout(that.callback, 2000);
+        });
         monitor.start();
       },
       'log files should contain correct output': function (err) {
