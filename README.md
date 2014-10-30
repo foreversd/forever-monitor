@@ -75,7 +75,9 @@ There are several options that you should be aware of when using forever. Most o
     //
     'spawnWith': {
       customFds: [-1, -1, -1], // that forever spawns.
-      setsid: false
+      setsid: false,
+      uid: 0, // Custom UID
+      gid: 0  // Custom GID
     },
 
     //
