@@ -1,7 +1,7 @@
 /*
  * send-test.js: Tests sending child processes messages.
  *
- * (C) 2013 Nodejitsu Inc.
+ * (C) 2013 Charlie Robbins & the Contributors
  * MIT LICENCE
  *
  */

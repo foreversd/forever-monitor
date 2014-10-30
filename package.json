@@ -2,7 +2,7 @@
   "name": "forever-monitor",
   "description": "Core forever process monitor",
   "version": "1.3.0",
-  "author": "Nodejitsu Inc <info@nodejitsu.com>",
+  "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
     { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
     { "name": "Fedor Indutny", "email": "fedor.indutny@gmail.com" },

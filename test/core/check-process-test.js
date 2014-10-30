@@ -1,7 +1,7 @@
 /*
  * check-process-test.js: Tests for forever.checkProcess(pid)
  *
- * (C) 2010 Nodejitsu Inc.
+ * (C) 2010 Charlie Robbins & the Contributors
  * MIT LICENCE
  *
  */

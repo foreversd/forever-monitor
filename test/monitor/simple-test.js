@@ -1,7 +1,7 @@
 /*
  * simple-test.js: Simple tests for using Monitor instances.
  *
- * (C) 2010 Nodejitsu Inc.
+ * (C) 2010 Charlie Robbins & the Contributors
  * MIT LICENCE
  *
  */

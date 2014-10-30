@@ -1,7 +1,7 @@
 /*
  * signal-test.js: Tests for spin restarts in forever.
  *
- * (C) 2010 Nodejitsu Inc.
+ * (C) 2010 Charlie Robbins & the Contributors
  * MIT LICENCE
  *
  */
@@ -24,12 +24,12 @@ vows.describe('forever-monitor/monitor/signal').addBatch({
           timer = setTimeout(function () {
             callback(new Error('Child did not die when killed by forever'), child);
           }, 3000);
-              
+
           child.on('exit', function () {
             callback.apply(null, [null].concat([].slice.call(arguments)));
             clearTimeout(timer);
           });
-          
+
           child.on('start', function () {
             //
             // Give it time to set up signal handlers
@@ -38,7 +38,7 @@ vows.describe('forever-monitor/monitor/signal').addBatch({
               child.stop();
             }, 1000);
           });
-          
+
           child.start();
         },
         "should forcibly kill the processes": function (err, child, spinning) {
