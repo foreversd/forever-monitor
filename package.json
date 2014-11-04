@@ -21,16 +21,15 @@
     "tools"
   ],
   "dependencies": {
-    "broadway": "0.2.x",
-    "minimatch": "0.2.x",
-    "pkginfo": "0.x.x",
+    "broadway": "~0.3.6",
+    "minimatch": "~1.0.0",
     "ps-tree": "0.0.x",
-    "watch": "0.5.x",
-    "utile": "0.1.x"
+    "watch": "~0.13.0",
+    "utile": "~0.2.1"
   },
   "devDependencies": {
-    "optimist": "0.3.x",
-    "vows": "0.7.x"
+    "optimist": "~0.6.1",
+    "vows": "~0.7.0"
   },
   "main": "./lib/index.js",
   "scripts": {
