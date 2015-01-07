@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "broadway": "~0.3.6",
-    "minimatch": "~1.0.0",
+    "minimatch": "~2.0.0",
     "ps-tree": "0.0.x",
     "watch": "~0.13.0",
     "utile": "~0.2.1"

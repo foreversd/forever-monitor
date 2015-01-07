@@ -50,7 +50,7 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
         'restart the script': function (child, _) {
           fs.writeFileSync(path.join(watchDir, 'file'), '/* hello, I know nodejitsu. */');
         }
-      },
+      }
     }
   }
 }).addBatch({
@@ -80,13 +80,39 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
   }
 }).addBatch({
   'When using forever with watch enabled': {
-    'when file in ignored dir is updated': {
-      topic: function (child) {
-        fs.writeFileSync(path.join(watchDir, 'ignore_newFile'), '');
-        child.once('watch:ignore', this.callback);
+    'when a file matching an ignore pattern is added': {
+      topic: function () {
+        var self = this;
+
+        this.expected  = [];
+        this.filenames = [
+          path.join(watchDir, 'ignore_newFile'),
+          path.join(watchDir, 'ignoredDir', 'ignore_subfile')
+        ];
+
+        monitor.on('watch:ignore', function (info) {
+          if (self.expected.indexOf(info.file) === -1) {
+            self.expected.push(info.file);
+          }
+
+          if (self.expected.length == 2) {
+            self.callback();
+          }
+        });
+
+        this.filenames.forEach(function (filename) {
+          fs.writeFileSync(filename, '');
+        });
       },
-      'do nothing': function (child, _) {
-        fs.unlinkSync(path.join(watchDir, 'ignore_newFile'));
+      'do nothing': function () {
+        var expected = this.expected;
+        assert.lengthOf(expected, 2);
+        this.filenames.forEach(function (filename) {
+          assert.include(expected, filename);
+          fs.unlinkSync(filename);
+        });
+
+        monitor.stop();
       }
     }
   }
