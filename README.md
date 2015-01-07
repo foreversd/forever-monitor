@@ -1,4 +1,4 @@
-# forever-monitor [![Build Status](https://secure.travis-ci.org/nodejitsu/forever-monitor.png)](http://travis-ci.org/nodejitsu/forever-monitor)
+# forever-monitor [![Build Status](https://secure.travis-ci.org/foreverjs/forever-monitor.png)](http://travis-ci.org/foreverjs/forever-monitor)
 
 The core monitoring functionality of forever without the CLI
 
