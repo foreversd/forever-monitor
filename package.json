@@ -35,6 +35,7 @@
   "scripts": {
     "test": "vows test/**/*-test.js --spec -i"
   },
+  "license": "MIT",
   "engines": {
     "node": ">= 0.8.x"
   }
