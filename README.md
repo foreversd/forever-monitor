@@ -119,7 +119,7 @@ Each forever object is an instance of the node.js core EventEmitter. There are s
 * **start**   _[process, data]:_   Raised when the target script is first started.
 * **stop**    _[process]:_         Raised when the target script is stopped by the user
 * **restart** _[forever]:_         Raised each time the target script is restarted
-* **exit**    _[forever]:_         Raised when the target script actually exits (permenantly).
+* **exit**    _[forever]:_         Raised when the target script actually exits (permanently).
 * **stdout**  _[data]:_            Raised when data is received from the child process' stdout
 * **stderr**  _[data]:_            Raised when data is received from the child process' stderr
 
