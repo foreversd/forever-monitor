@@ -120,5 +120,35 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal('' + buf, 'sample-script.js');
       }
     }
+  },
+  "attempting to start a command via npm that doesn't exist": {
+    topic: function () {
+      var child = fmonitor.start('npm start', {
+        max: 1,
+        silent: true,
+        sourceDir: '/tmp',
+        cwd: '/tmp'
+      });
+      child.on('error', this.callback.bind({}, null));
+    },
+    "should throw an error about the invalid file": function (err) {
+      assert.isNotNull(err);
+      assert.isTrue(err.message.indexOf('does not exist') !== -1);
+    }
+  },
+  "attempting to start a command that doesn't exist": {
+    topic: function () {
+      var child = fmonitor.start('surely_doesnot_exist_abcdef123', {
+        max: 1,
+        silent: true,
+        sourceDir: '/tmp',
+        cwd: '/tmp'
+      });
+      child.on('error', this.callback.bind({}, null));
+    },
+    "should throw an error about the invalid file": function (err) {
+      assert.isNotNull(err);
+      assert.isTrue(err.message.indexOf('does not exist') !== -1);
+    }
   }
 }).export(module);
