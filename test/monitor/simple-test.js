@@ -121,34 +121,20 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
       }
     }
   },
-  "attempting to start a command via npm that doesn't exist": {
+"attempting to start a command where the path and file do not exist": {
     topic: function () {
-      var child = fmonitor.start('npm start', {
+      var child = fmonitor.start('', {
         max: 1,
         silent: true,
-        sourceDir: '/tmp',
-        cwd: '/tmp'
+        sourceDir: '/blah/not/here',
+        cwd: '/blah/not/here',
+        command: 'npm start'
       });
       child.on('error', this.callback.bind({}, null));
     },
     "should throw an error about the invalid file": function (err) {
       assert.isNotNull(err);
-      assert.isTrue(err.message.indexOf('does not exist') !== -1);
-    }
-  },
-  "attempting to start a command that doesn't exist": {
-    topic: function () {
-      var child = fmonitor.start('surely_doesnot_exist_abcdef123', {
-        max: 1,
-        silent: true,
-        sourceDir: '/tmp',
-        cwd: '/tmp'
-      });
-      child.on('error', this.callback.bind({}, null));
-    },
-    "should throw an error about the invalid file": function (err) {
-      assert.isNotNull(err);
-      assert.isTrue(err.message.indexOf('does not exist') !== -1);
+      assert.isTrue(err.message.indexOf('ENOENT') !== -1);
     }
   }
 }).export(module);
