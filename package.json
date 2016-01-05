@@ -4,12 +4,30 @@
   "version": "1.7.0",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
-    { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
-    { "name": "Fedor Indutny", "email": "fedor.indutny@gmail.com" },
-    { "name": "James Halliday", "email": "mail@substack.net" },
-    { "name": "Bradley Meck", "email": "bradley@nodejitsu.com" },
-    { "name": "Dominic Tarr", "email": "dominic@nodejitsu.com" },
-    { "name": "Maciej Małecki", "email": "maciej@nodejitsu.com" }
+    {
+      "name": "Charlie Robbins",
+      "email": "charlie@nodejitsu.com"
+    },
+    {
+      "name": "Fedor Indutny",
+      "email": "fedor.indutny@gmail.com"
+    },
+    {
+      "name": "James Halliday",
+      "email": "mail@substack.net"
+    },
+    {
+      "name": "Bradley Meck",
+      "email": "bradley@nodejitsu.com"
+    },
+    {
+      "name": "Dominic Tarr",
+      "email": "dominic@nodejitsu.com"
+    },
+    {
+      "name": "Maciej Małecki",
+      "email": "maciej@nodejitsu.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -29,7 +47,7 @@
   },
   "devDependencies": {
     "optimist": "~0.6.1",
-    "vows": "~0.7.0"
+    "vows": "0.8.0"
   },
   "main": "./lib/index.js",
   "scripts": {
