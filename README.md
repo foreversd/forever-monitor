@@ -61,6 +61,7 @@ There are several options that you should be aware of when using forever. Most o
     'command': 'perl',         // Binary to run (default: 'node')
     'args':    ['foo','bar'],  // Additional arguments to pass to the script,
     'sourceDir': 'script/path',// Directory that the source script is in
+    'ignoreOkExit': false,     // Do not restart child process if it exits with code 0 (default: false)
 
     //
     // Options for restarting on watched files.
