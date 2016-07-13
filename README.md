@@ -93,6 +93,10 @@ There are several options that you should be aware of when using forever. Most o
     'logFile': 'path/to/file', // Path to log output from forever process (when daemonized)
     'outFile': 'path/to/file', // Path to log output from child stdout
     'errFile': 'path/to/file', // Path to log output from child stderr
+    
+    // Indicates, that files above should be appended, rather than 
+    // newlly created, after each child's restart (default false)
+    'append': false,
 
     //
     // ### function parseCommand (command, args)
