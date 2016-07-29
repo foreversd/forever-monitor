@@ -93,6 +93,14 @@ There are several options that you should be aware of when using forever. Most o
     'logFile': 'path/to/file', // Path to log output from forever process (when daemonized)
     'outFile': 'path/to/file', // Path to log output from child stdout
     'errFile': 'path/to/file', // Path to log output from child stderr
+    
+    //
+    // Log rotation options, taken from winston
+    //
+    'tailable': false,      // If true, log files will be rolled based on maxsize and maxfiles, but in ascending order. The filename will always have the most recent log lines. The larger the appended number, the older the log file. This option requires maxFiles to be set, or it will be ignored.
+    'maxsize': 10240,       // Max size in bytes of the logfile, if the size is exceeded then a new file is created, a counter will become a suffix of the log file.
+    'maxFiles': 3,          // Limit the number of files created when the size of the logfile is exceeded.
+    'zippedArchive': false, // If true, all log files but the current one will be zipped.
 
     //
     // ### function parseCommand (command, args)

@@ -12,7 +12,7 @@ function checkLogOutput(file, stream, expectedLength) {
 
   assert.equal(lines.length, expectedLength);
   lines.forEach(function (line, i) {
-    assert.equal(lines[i], stream + ' ' + (i % 10));
+    assert.equal(true, lines[i].indexOf(stream + ' ' + (i % 10)) !== -1);
   });
 }
 
@@ -78,6 +78,29 @@ vows.describe('forever-monitor/plugins/logger').addBatch({
       'log files should not be truncated': function (err) {
         checkLogOutput('logs-stdout.log', 'stdout', 40);
         checkLogOutput('logs-stderr.log', 'stderr', 40);
+      }
+    },
+    'with log rotation enabled': {
+      topic: function () {
+        var monitor = new fmonitor.Monitor(path.join(fixturesDir, 'logs.js'), {
+          max: 1,
+          silent: true,
+          logFile: path.join(fixturesDir, 'logsr.log'),
+          outFile: path.join(fixturesDir, 'logsr-stdout.log'),
+          errFile: path.join(fixturesDir, 'logsr-stderr.log'),
+          tailable: true,
+          maxsize: 50,
+          maxFiles: 1,
+          zippedArchive: true
+        });
+
+        monitor.on('exit', this.callback.bind({}, null));
+        monitor.start();
+      },
+      'log files should be rotated': function (err) {
+        assert.equal(true, fs.existsSync(path.join(fixturesDir, 'logsr1.log.gz')));
+        assert.equal(true, fs.existsSync(path.join(fixturesDir, 'logsr-stdout1.log.gz')));
+        assert.equal(true, fs.existsSync(path.join(fixturesDir, 'logsr-stderr1.log.gz')));
       }
     }
   }

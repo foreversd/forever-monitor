@@ -25,7 +25,9 @@
     "chokidar": "^1.0.1",
     "minimatch": "~2.0.0",
     "ps-tree": "0.0.x",
-    "utile": "~0.2.1"
+    "utile": "~0.2.1",
+	"winston": "^2.2.0",
+    "winston-stream": "0.0.0"
   },
   "devDependencies": {
     "optimist": "~0.6.1",
