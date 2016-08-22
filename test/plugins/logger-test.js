@@ -83,7 +83,7 @@ vows.describe('forever-monitor/plugins/logger').addBatch({
     'with log rotation enabled': {
       topic: function () {
         var monitor = new fmonitor.Monitor(path.join(fixturesDir, 'logs.js'), {
-          max: 1,
+          max: 2,
           silent: true,
           logFile: path.join(fixturesDir, 'logsr.log'),
           outFile: path.join(fixturesDir, 'logsr-stdout.log'),
