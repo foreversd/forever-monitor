@@ -11,7 +11,7 @@ You can also use forever from inside your own node.js code.
   var child = new (forever.Monitor)('your-filename.js', {
     max: 3,
     silent: true,
-    args: []
+    args: ['--color']
   });
 
   child.on('exit', function () {
@@ -66,9 +66,9 @@ There are several options that you should be aware of when using forever. Most o
     // Options for restarting on watched files.
     //
     'watch': true,               // Value indicating if we should watch files.
-    'watchIgnoreDotFiles': null, // Whether to ignore file starting with a '.'
+    'watchIgnoreDotFiles': true, // Whether to ignore file starting with a '.'
     'watchIgnorePatterns': null, // Ignore patterns to use when watching files.
-    'watchDirectory': null,      // Top-level directory to watch from.
+    'watchDirectory': '.',       // Top-level directory to watch from.
 
     //
     // All or nothing options passed along to `child_process.spawn`.
