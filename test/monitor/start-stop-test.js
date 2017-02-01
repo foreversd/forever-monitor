@@ -35,11 +35,12 @@ vows.describe('forever-monitor/monitor/start-stop').addBatch({
       },
       "calling the start() and stop() methods": {
         topic: function (child) {
-          var that = this;
+          var that = this, timer;
+
           timer = setTimeout(function () {
             that.callback(new Error('Child did not die when killed by forever'), child);
           }, 8000);
-          
+
           process.on('uncaughtException', function(err) {
             that.callback(err, child)
           });
@@ -52,7 +53,13 @@ vows.describe('forever-monitor/monitor/start-stop').addBatch({
               child.once("restart", function(){
                 child.stop()
               })
-              child.once("exit", function(){ that.callback(null, child) })
+              child.once("exit", function(){
+                // wait another two seconds, to make sure the child is not restarted after calling stop()
+                setTimeout(function() {
+                  clearTimeout(timer)
+                  that.callback(null, child)
+                }, 2000);
+              })
             }, 2000);
           }, 1000);
         },
