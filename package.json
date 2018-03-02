@@ -1,7 +1,7 @@
 {
   "name": "forever-monitor",
   "description": "Core forever process monitor",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
     {
@@ -41,7 +41,7 @@
   "dependencies": {
     "broadway": "~0.3.6",
     "chokidar": "^1.0.1",
-    "minimatch": "~2.0.0",
+    "minimatch": "~3.0.2",
     "ps-tree": "0.0.x",
     "utile": "~0.2.1"
   },
