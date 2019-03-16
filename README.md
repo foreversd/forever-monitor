@@ -18,7 +18,8 @@ You can also use forever from inside your own node.js code.
     console.log('your-filename.js has exited after 3 restarts');
   });
 
-  child.start();
+  child.start(); // starts demon
+  // child.kill(); // kills demon
 ```
 
 ### Spawning a non-node process
@@ -31,6 +32,8 @@ You can spawn non-node processes too. Either set the `command` key in the
     max : 1,
     silent : true
   });
+  child.start(); // starts demon
+  // child.kill(); // kills demon
 ```
 
 ### Options available when using Forever in node.js
