@@ -33,7 +33,8 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "test": "vows test/**/*-test.js --spec -i"
+    "test": "vows test/**/*-test.js --spec -i",
+    "test:ci": "npm run test"
   },
   "license": "MIT",
   "engines": {
