@@ -14,6 +14,8 @@ var assert = require('assert'),
 
 var watchDir = fs.realpathSync(path.join(__dirname, '..', 'fixtures', 'watch')),
     monitor;
+var watchDirToo = fs.realpathSync(path.join(__dirname, '..', 'fixtures', 'watch_too')),
+    monitor;
 
 vows.describe('forever-monitor/plugins/watch').addBatch({
   'When using forever with watch enabled': {
@@ -22,12 +24,14 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
         silent: true,
         args: ['-p', '8090'],
         watch: true,
-        sourceDir: path.join(__dirname, '..', 'fixtures', 'watch')
+        sourceDir: path.join(__dirname, '..', 'fixtures', 'watch'),
+		watchDirectory: [path.join(__dirname, '..', 'fixtures', 'watch'), path.join(__dirname, '..', 'fixtures', 'watch_too')]
       }),
       'have correct options set': function (child) {
         monitor = child;
         assert.isTrue(child.watchIgnoreDotFiles);
-        assert.equal(watchDir, fs.realpathSync(child.watchDirectory));
+        assert.equal(watchDir, fs.realpathSync(child.watchDirectory[0]));
+		assert.equal(watchDirToo, fs.realpathSync(child.watchDirectory[1]));
       },
       'read .foreverignore file and store ignore patterns': function (child) {
         setTimeout(function () {
@@ -91,6 +95,18 @@ vows.describe('forever-monitor/plugins/watch').addBatch({
       },
       'restart the script': function (child, _) {
         fs.writeFileSync(path.join(watchDir, 'file'), '/* hello, I know nodejitsu. ');
+      }
+    }
+  }
+}).addBatch({
+  'When using forever with watch enabled': {
+    'when file in second directory changes': {
+      topic: function (child) {
+        child.once('restart', this.callback);
+        fs.writeFileSync(path.join(watchDirToo, 'file'), '// hello, I know nodejitsu.');
+      },
+      'restart the script': function (child, _) {
+        fs.writeFileSync(path.join(watchDirToo, 'file'), '/* hello, I know nodejitsu. ');
       }
     }
   }
