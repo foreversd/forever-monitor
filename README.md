@@ -131,7 +131,7 @@ When running the forever CLI tool, it produces debug outputs about which files h
 var child = new (forever.Monitor)('your-filename.js');
 
 child.on('watch:restart', function(info) {
-    console.error('Restaring script because ' + info.file + ' changed');
+    console.error('Restarting script because ' + info.file + ' changed');
 });
 
 child.on('restart', function() {
