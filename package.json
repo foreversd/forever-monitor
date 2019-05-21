@@ -4,12 +4,30 @@
   "version": "1.7.1",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
-    { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
-    { "name": "Fedor Indutny", "email": "fedor.indutny@gmail.com" },
-    { "name": "James Halliday", "email": "mail@substack.net" },
-    { "name": "Bradley Meck", "email": "bradley@nodejitsu.com" },
-    { "name": "Dominic Tarr", "email": "dominic@nodejitsu.com" },
-    { "name": "Maciej Małecki", "email": "maciej@nodejitsu.com" }
+    {
+      "name": "Charlie Robbins",
+      "email": "charlie@nodejitsu.com"
+    },
+    {
+      "name": "Fedor Indutny",
+      "email": "fedor.indutny@gmail.com"
+    },
+    {
+      "name": "James Halliday",
+      "email": "mail@substack.net"
+    },
+    {
+      "name": "Bradley Meck",
+      "email": "bradley@nodejitsu.com"
+    },
+    {
+      "name": "Dominic Tarr",
+      "email": "dominic@nodejitsu.com"
+    },
+    {
+      "name": "Maciej Małecki",
+      "email": "maciej@nodejitsu.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -22,10 +40,10 @@
   ],
   "dependencies": {
     "broadway": "~0.3.6",
-    "chokidar": "^1.0.1",
+    "chokidar": "^1.7.0",
     "minimatch": "~3.0.2",
     "ps-tree": "0.0.x",
-    "utile": "~0.2.1"
+    "utile": "^0.3.0"
   },
   "devDependencies": {
     "optimist": "~0.6.1",
