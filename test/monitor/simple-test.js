@@ -120,5 +120,21 @@ vows.describe('forever-monitor/monitor/simple').addBatch({
         assert.equal('' + buf, 'sample-script.js');
       }
     }
+  },
+"attempting to start a command where the path and file do not exist": {
+    topic: function () {
+      var child = fmonitor.start('', {
+        max: 1,
+        silent: true,
+        sourceDir: '/blah/not/here',
+        cwd: '/blah/not/here',
+        command: 'npm start'
+      });
+      child.on('error', this.callback.bind({}, null));
+    },
+    "should throw an error about the invalid file": function (err) {
+      assert.isNotNull(err);
+      assert.isTrue(err.message.indexOf('ENOENT') !== -1);
+    }
   }
 }).export(module);
