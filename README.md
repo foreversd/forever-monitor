@@ -45,6 +45,7 @@ There are several options that you should be aware of when using forever. Most o
     'uid': 'your-UID',          // Custom uid for this forever process. (default: autogen)
     'pidFile': 'path/to/a.pid', // Path to put pid information for the process(es) started
     'max': 10,                  // Sets the maximum number of times a given script should run
+    'cooldownInterval': 300,    // Stop restarting if max is reached during this interval (in seconds)
     'killTree': true,           // Kills the entire child process tree on `exit`
 
     //
