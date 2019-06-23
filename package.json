@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "optimist": "~0.6.1",
-    "vows": "~0.7.0"
+    "vows": "0.8.0"
   },
   "main": "./lib/index.js",
   "scripts": {
