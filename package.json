@@ -27,8 +27,19 @@
     {
       "name": "Maciej Małecki",
       "email": "maciej@nodejitsu.com"
+    },
+    {
+      "name": "Igor Savin",
+      "email": "kibertoad@gmail.com"
     }
   ],
+  "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" \"examples/**/*.js\"",
+    "test": "vows test/**/*-test.js --dot-matrix -i",
+    "test:ci": "npm run lint && npm run test",
+    "prettier": "prettier --write \"{lib,examples,test}/**/*.js\""
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/nodejitsu/forever-monitor.git"
@@ -46,13 +57,12 @@
     "utile": "^0.3.0"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "optimist": "~0.6.1",
+    "prettier": "^1.19.1",
     "vows": "0.7.0"
-  },
-  "main": "./lib/index.js",
-  "scripts": {
-    "test": "vows test/**/*-test.js --dot-matrix -i",
-    "test:ci": "npm run test"
   },
   "engines": {
     "node": ">=6"
