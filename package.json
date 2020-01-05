@@ -57,7 +57,7 @@
     "utile": "^0.3.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "optimist": "~0.6.1",
