@@ -9,8 +9,7 @@
 const assert = require('assert'),
   path = require('path'),
   vows = require('vows'),
-  fmonitor = require('../../lib'),
-  macros = require('../helpers/macros');
+  fmonitor = require('../../lib');
 
 const examplesDir = path.join(__dirname, '..', '..', 'examples');
 

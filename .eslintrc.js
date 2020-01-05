@@ -17,8 +17,7 @@ module.exports = {
     'no-fallthrough': 2,
     'require-atomic-updates': 0,
     'no-useless-escape': 0,
-    'no-unused-vars': 0,
-    'no-var': 0 // ToDo
+    'no-unused-vars': 0
   },
   env: {
     node: true,

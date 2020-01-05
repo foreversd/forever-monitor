@@ -7,8 +7,6 @@
  */
 
 const assert = require('assert'),
-  path = require('path'),
-  spawn = require('child_process').spawn,
   fmonitor = require('../../lib');
 
 const macros = exports;
