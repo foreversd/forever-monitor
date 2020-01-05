@@ -6,10 +6,10 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib');
+const assert = require('assert'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spawn-options')
@@ -18,8 +18,8 @@ vows
       'an instance of Monitor with valid options': {
         'passing environment variables to env-vars.js': {
           topic: function() {
-            var that = this,
-              child;
+            const that = this;
+            let child;
 
             this.env = {
               FOO: 'foo',
@@ -53,8 +53,8 @@ vows
         },
         'passing a custom cwd to custom-cwd.js': {
           topic: function() {
-            var that = this,
-              child;
+            const that = this;
+            let child;
 
             this.cwd = path.join(__dirname, '..');
 
@@ -85,10 +85,10 @@ vows
         },
         'setting `hideEnv` when spawning all-env-vars.js': {
           topic: function() {
-            var that = this,
-              all = '',
-              confirmed,
-              child;
+            const that = this;
+            let all = '',
+                confirmed,
+                child;
 
             this.hideEnv = ['USER', 'OLDPWD'];
 
@@ -130,7 +130,7 @@ vows
             err,
             child
           ) {
-            var that = this;
+            const that = this;
 
             this.hideEnv.forEach(function(key) {
               assert.isTrue(that.env.indexOf(key) === -1);

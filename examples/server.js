@@ -1,8 +1,8 @@
-var util = require('util'),
-  http = require('http'),
-  argv = require('optimist').argv;
+const util = require('util'),
+    http = require('http'),
+    argv = require('optimist').argv;
 
-var port = argv.p || argv.port || 80;
+const port = argv.p || argv.port || 80;
 
 http
   .createServer(function(req, res) {

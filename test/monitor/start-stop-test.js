@@ -6,13 +6,13 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib'),
-  macros = require('../helpers/macros');
+const assert = require('assert'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib'),
+    macros = require('../helpers/macros');
 
-var examplesDir = path.join(__dirname, '..', '..', 'examples');
+const examplesDir = path.join(__dirname, '..', '..', 'examples');
 
 vows
   .describe('forever-monitor/monitor/start-stop')
@@ -37,8 +37,8 @@ vows
         },
         'calling the start() and stop() methods': {
           topic: function(child) {
-            var that = this,
-              timer;
+            const that = this;
+            let timer;
 
             timer = setTimeout(function() {
               that.callback(

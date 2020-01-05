@@ -6,10 +6,10 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib');
+const assert = require('assert'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib');
 
 vows
   .describe('forever/core/check-process')

@@ -1,8 +1,8 @@
-var util = require('util'),
-  path = require('path'),
-  spawn = require('child_process').spawn;
+const util = require('util'),
+    path = require('path'),
+    spawn = require('child_process').spawn;
 
-var child = spawn('node', [path.join(__dirname, 'count-timer.js')], {
+const child = spawn('node', [path.join(__dirname, 'count-timer.js')], {
   cwd: __dirname,
 });
 

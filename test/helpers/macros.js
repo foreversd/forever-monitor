@@ -6,19 +6,19 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  spawn = require('child_process').spawn,
-  fmonitor = require('../../lib');
+const assert = require('assert'),
+    path = require('path'),
+    spawn = require('child_process').spawn,
+    fmonitor = require('../../lib');
 
-var macros = exports;
+const macros = exports;
 
 macros.assertTimes = function(script, times, options) {
   options.max = times;
 
   return {
     topic: function() {
-      var child = new fmonitor.Monitor(script, options);
+      const child = new fmonitor.Monitor(script, options);
       child.on('exit', this.callback.bind({}, null));
       child.start();
     },

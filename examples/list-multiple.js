@@ -1,9 +1,9 @@
-var path = require('path'),
-  async = require('utile').async,
-  forever = require('../lib/forever');
+const path = require('path'),
+    async = require('utile').async,
+    forever = require('../lib/forever');
 
 function startServer(port, next) {
-  var child = new forever.Monitor(script, {
+  const child = new forever.Monitor(script, {
     args: ['--port', port],
     silent: true,
   });
@@ -16,7 +16,7 @@ function startServer(port, next) {
 }
 
 // Array config data
-var script = path.join(__dirname, 'server.js'),
+const script = path.join(__dirname, 'server.js'),
   ports = [8080, 8081, 8082];
 
 async.map(ports, startServer, function(err, monitors) {

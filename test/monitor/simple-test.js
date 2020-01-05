@@ -6,13 +6,13 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib'),
-  macros = require('../helpers/macros');
+const assert = require('assert'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib'),
+    macros = require('../helpers/macros');
 
-var examplesDir = path.join(__dirname, '..', '..', 'examples');
+const examplesDir = path.join(__dirname, '..', '..', 'examples');
 
 vows
   .describe('forever-monitor/monitor/simple')
@@ -34,7 +34,7 @@ vows
         },
         'calling the restart() method in less than `minUptime`': {
           topic: function(child) {
-            var that = this;
+            const that = this;
             child.once('start', function() {
               child.once('restart', that.callback.bind(this, null));
               child.restart();
@@ -71,7 +71,7 @@ vows
       ),
       'non-node usage with a perl one-liner': {
         topic: function() {
-          var child = fmonitor.start(['perl', '-le', 'print "moo"'], {
+          const child = fmonitor.start(['perl', '-le', 'print "moo"'], {
             max: 1,
             silent: true,
           });
@@ -83,7 +83,7 @@ vows
       },
       'passing node flags through command': {
         topic: function() {
-          var child = fmonitor.start('test/fixtures/gc.js', {
+          const child = fmonitor.start('test/fixtures/gc.js', {
             command: 'node --expose-gc',
             max: 1,
             silent: true,
@@ -97,7 +97,7 @@ vows
       },
       "attempting to start a script that doesn't exist": {
         topic: function() {
-          var child = fmonitor.start('invalid-path.js', {
+          const child = fmonitor.start('invalid-path.js', {
             max: 1,
             silent: true,
           });
@@ -110,7 +110,7 @@ vows
       },
       'attempting to start a command with `node` in the name': {
         topic: function() {
-          var child = fmonitor.start('sample-script.js', {
+          const child = fmonitor.start('sample-script.js', {
             command: path.join(__dirname, '..', 'fixtures', 'testnode'),
             silent: true,
             max: 1,
