@@ -7,9 +7,7 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    spawn = require('child_process').spawn,
-    fmonitor = require('../../lib');
+  fmonitor = require('../../lib');
 
 const macros = exports;
 
@@ -18,8 +16,8 @@ macros.assertTimes = function(script, times, options) {
 
   return {
     topic: function() {
-        const child = new fmonitor.Monitor(script, options);
-        child.on('exit', this.callback.bind({}, null));
+      const child = new fmonitor.Monitor(script, options);
+      child.on('exit', this.callback.bind({}, null));
       child.start();
     },
     "should emit 'exit' when completed": function(err, child) {

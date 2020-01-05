@@ -1,9 +1,9 @@
 const util = require('util'),
-    path = require('path'),
-    spawn = require('child_process').spawn;
+  path = require('path'),
+  spawn = require('child_process').spawn;
 
 const child = spawn('node', [path.join(__dirname, 'count-timer.js')], {
-    cwd: __dirname,
+  cwd: __dirname,
 });
 
 child.stdout.on('data', function(data) {

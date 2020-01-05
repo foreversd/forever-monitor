@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/signal')
@@ -18,21 +18,20 @@ vows
       'and spawning a script that ignores signals SIGINT and SIGTERM': {
         'with killTTL defined': {
           topic: function() {
-              const script = path.join(
-                  __dirname,
-                  '..',
-                  '..',
-                  'examples',
-                  'signal-ignore.js'
-                  ),
-                  child = new fmonitor.Monitor(script, {
-                      silent: true,
-                      killTTL: 1000,
-                  }),
-                  callback = this.callback;
-              let timer;
+            const script = path.join(
+                __dirname,
+                '..',
+                '..',
+                'examples',
+                'signal-ignore.js'
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                killTTL: 1000,
+              }),
+              callback = this.callback;
 
-              timer = setTimeout(function() {
+            const timer = setTimeout(function() {
               callback(
                 new Error('Child did not die when killed by forever'),
                 child
@@ -67,21 +66,20 @@ vows
       'and spawning script that gracefully exits on SIGTERM': {
         'with killSignal defined child': {
           topic: function() {
-              const script = path.join(
-                  __dirname,
-                  '..',
-                  '..',
-                  'examples',
-                  'graceful-exit.js'
-                  ),
-                  child = new fmonitor.Monitor(script, {
-                      silent: true,
-                      killSignal: 'SIGTERM',
-                  }),
-                  callback = this.callback;
-              let timer;
+            const script = path.join(
+                __dirname,
+                '..',
+                '..',
+                'examples',
+                'graceful-exit.js'
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                killSignal: 'SIGTERM',
+              }),
+              callback = this.callback;
 
-              timer = setTimeout(function() {
+            const timer = setTimeout(function() {
               callback(
                 new Error('Child did not die when killed by forever'),
                 child

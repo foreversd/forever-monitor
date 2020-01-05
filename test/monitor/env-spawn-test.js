@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spawn-options')
@@ -18,15 +18,14 @@ vows
       'an instance of Monitor with valid options': {
         'passing environment variables to env-vars.js': {
           topic: function() {
-              const that = this;
-              let child;
+            const that = this;
 
-              this.env = {
+            this.env = {
               FOO: 'foo',
               BAR: 'bar',
             };
 
-            child = new fmonitor.Monitor(
+            const child = new fmonitor.Monitor(
               path.join(__dirname, '..', '..', 'examples', 'env-vars.js'),
               {
                 max: 1,
@@ -53,12 +52,11 @@ vows
         },
         'passing a custom cwd to custom-cwd.js': {
           topic: function() {
-              const that = this;
-              let child;
+            const that = this;
 
-              this.cwd = path.join(__dirname, '..');
+            this.cwd = path.join(__dirname, '..');
 
-            child = new fmonitor.Monitor(
+            const child = new fmonitor.Monitor(
               path.join(__dirname, '..', '..', 'examples', 'custom-cwd.js'),
               {
                 max: 1,
@@ -85,12 +83,21 @@ vows
         },
         'setting `hideEnv` when spawning all-env-vars.js': {
           topic: function() {
-              const that = this;
-              let all = '',
-                  confirmed,
-                  child;
+            const that = this;
+            let all = '',
+              confirmed;
 
-              this.hideEnv = ['USER', 'OLDPWD'];
+            this.hideEnv = ['USER', 'OLDPWD'];
+
+            const child = new fmonitor.Monitor(
+              path.join(__dirname, '..', '..', 'examples', 'all-env-vars.js'),
+              {
+                max: 1,
+                silent: true,
+                minUptime: 0,
+                hideEnv: this.hideEnv,
+              }
+            );
 
             //
             // Remark (indexzero): This may be a symptom of a larger bug.
@@ -103,16 +110,6 @@ vows
 
               confirmed = true;
             }
-
-            child = new fmonitor.Monitor(
-              path.join(__dirname, '..', '..', 'examples', 'all-env-vars.js'),
-              {
-                max: 1,
-                silent: true,
-                minUptime: 0,
-                hideEnv: this.hideEnv,
-              }
-            );
 
             child.on('stdout', function(data) {
               all += data;
@@ -130,9 +127,9 @@ vows
             err,
             child
           ) {
-              const that = this;
+            const that = this;
 
-              this.hideEnv.forEach(function(key) {
+            this.hideEnv.forEach(function(key) {
               assert.isTrue(that.env.indexOf(key) === -1);
             });
           },

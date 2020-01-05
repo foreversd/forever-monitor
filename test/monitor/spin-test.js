@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spin-restart')
@@ -18,20 +18,20 @@ vows
       'and spawning a script that spin restarts': {
         'with no spinSleepTime specified': {
           topic: function() {
-              const script = path.join(
-                  __dirname,
-                  '..',
-                  '..',
-                  'examples',
-                  'always-throw.js'
-                  ),
-                  child = new fmonitor.Monitor(script, {
-                      silent: true,
-                      minUptime: 2000,
-                      max: 3,
-                  });
+            const script = path.join(
+                __dirname,
+                '..',
+                '..',
+                'examples',
+                'always-throw.js'
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                minUptime: 2000,
+                max: 3,
+              });
 
-              child.on('exit', this.callback.bind({}, null));
+            child.on('exit', this.callback.bind({}, null));
             child.start();
           },
           'should spawn both processes appropriately': function(
@@ -51,20 +51,20 @@ vows
         },
         'with a spinSleepTime specified': {
           topic: function() {
-              const script = path.join(
-                  __dirname,
-                  '..',
-                  '..',
-                  'examples',
-                  'always-throw.js'
-                  ),
-                  child = new fmonitor.Monitor(script, {
-                      silent: true,
-                      max: 3,
-                      spinSleepTime: 1,
-                  });
+            const script = path.join(
+                __dirname,
+                '..',
+                '..',
+                'examples',
+                'always-throw.js'
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                max: 3,
+                spinSleepTime: 1,
+              });
 
-              child.on('exit', this.callback.bind({}, null));
+            child.on('exit', this.callback.bind({}, null));
             child.start();
           },
           'should restart spinning processes': function(err, child, spinning) {

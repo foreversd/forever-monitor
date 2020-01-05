@@ -1,16 +1,16 @@
 const path = require('path'),
-    async = require('utile').async,
-    forever = require('../lib/forever');
+  async = require('utile').async,
+  forever = require('../lib/forever');
 
 const script = path.join(__dirname, 'server.js');
 
 function startServer(port, next) {
-    const child = new forever.Monitor(script, {
-        args: ['--port', port],
-        silent: true,
-    });
+  const child = new forever.Monitor(script, {
+    args: ['--port', port],
+    silent: true,
+  });
 
-    child.start();
+  child.start();
   child.on('start', function(_, data) {
     console.log('Forever process running server.js on ' + port);
     next(null, child);

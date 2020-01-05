@@ -7,16 +7,18 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    fs = require('fs'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  fs = require('fs'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
-const watchDir = fs.realpathSync(path.join(__dirname, '..', 'fixtures', 'watch'));
-let watchDirToo = fs.realpathSync(
-    path.join(__dirname, '..', 'fixtures', 'watch_too')
-  ),
-  monitor;
+const watchDir = fs.realpathSync(
+  path.join(__dirname, '..', 'fixtures', 'watch')
+);
+const watchDirToo = fs.realpathSync(
+  path.join(__dirname, '..', 'fixtures', 'watch_too')
+);
+let monitor;
 
 vows
   .describe('forever-monitor/plugins/watch')
@@ -57,8 +59,8 @@ vows
     'When using forever with watch enabled': {
       'when a file matching an ignore pattern is added': {
         topic: function() {
-            const self = this;
-            this.filenames = [
+          const self = this;
+          this.filenames = [
             path.join(watchDir, 'ignore_newFile'),
             path.join(watchDir, 'ignoredDir', 'ignore_subfile'),
           ];

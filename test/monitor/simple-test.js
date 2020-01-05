@@ -7,10 +7,10 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib'),
-    macros = require('../helpers/macros');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib'),
+  macros = require('../helpers/macros');
 
 const examplesDir = path.join(__dirname, '..', '..', 'examples');
 
@@ -34,8 +34,8 @@ vows
         },
         'calling the restart() method in less than `minUptime`': {
           topic: function(child) {
-              const that = this;
-              child.once('start', function() {
+            const that = this;
+            child.once('start', function() {
               child.once('restart', that.callback.bind(this, null));
               child.restart();
             });
@@ -71,11 +71,11 @@ vows
       ),
       'non-node usage with a perl one-liner': {
         topic: function() {
-            const child = fmonitor.start(['perl', '-le', 'print "moo"'], {
-                max: 1,
-                silent: true,
-            });
-            child.on('stdout', this.callback.bind({}, null));
+          const child = fmonitor.start(['perl', '-le', 'print "moo"'], {
+            max: 1,
+            silent: true,
+          });
+          child.on('stdout', this.callback.bind({}, null));
         },
         'should get back moo': function(err, buf) {
           assert.equal(buf.toString(), 'moo\n');
@@ -83,12 +83,12 @@ vows
       },
       'passing node flags through command': {
         topic: function() {
-            const child = fmonitor.start('test/fixtures/gc.js', {
-                command: 'node --expose-gc',
-                max: 1,
-                silent: true,
-            });
-            child.on('stdout', this.callback.bind({}, null));
+          const child = fmonitor.start('test/fixtures/gc.js', {
+            command: 'node --expose-gc',
+            max: 1,
+            silent: true,
+          });
+          child.on('stdout', this.callback.bind({}, null));
         },
         'should get back function': function(err, buf) {
           assert.isNull(err);
@@ -97,11 +97,11 @@ vows
       },
       "attempting to start a script that doesn't exist": {
         topic: function() {
-            const child = fmonitor.start('invalid-path.js', {
-                max: 1,
-                silent: true,
-            });
-            child.on('error', this.callback.bind({}, null));
+          const child = fmonitor.start('invalid-path.js', {
+            max: 1,
+            silent: true,
+          });
+          child.on('error', this.callback.bind({}, null));
         },
         'should throw an error about the invalid file': function(err) {
           assert.isNotNull(err);
@@ -110,12 +110,12 @@ vows
       },
       'attempting to start a command with `node` in the name': {
         topic: function() {
-            const child = fmonitor.start('sample-script.js', {
-                command: path.join(__dirname, '..', 'fixtures', 'testnode'),
-                silent: true,
-                max: 1,
-            });
-            child.on('stdout', this.callback.bind({}, null));
+          const child = fmonitor.start('sample-script.js', {
+            command: path.join(__dirname, '..', 'fixtures', 'testnode'),
+            silent: true,
+            max: 1,
+          });
+          child.on('stdout', this.callback.bind({}, null));
         },
         'should run the script': function(err, buf) {
           assert.isNull(err);

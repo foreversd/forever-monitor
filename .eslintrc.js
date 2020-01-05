@@ -1,5 +1,3 @@
-const warning = process.env['CI'] ? 2 : 1;
-
 module.exports = {
   parserOptions: {
     ecmaVersion: 2015,
@@ -10,14 +8,14 @@ module.exports = {
   ],
   plugins: [],
   rules: {
-    'no-unused-vars': [warning, { vars: 'all', args: 'none' }],
+    'no-unused-vars': [2, { vars: 'all', args: 'none' }],
     'no-console': 0,
     'no-octal': 0,
     'no-var': 2,
     'no-empty': 0,
-    'no-debugger': warning,
-    'prefer-const': warning,
-    'no-fallthrough': warning,
+    'no-debugger': 2,
+    'prefer-const': 2,
+    'no-fallthrough': 2,
     'require-atomic-updates': 0,
   },
   env: {
