@@ -7,10 +7,10 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib'),
-    macros = require('../helpers/macros');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib'),
+  macros = require('../helpers/macros');
 
 const examplesDir = path.join(__dirname, '..', '..', 'examples');
 
@@ -38,9 +38,8 @@ vows
         'calling the start() and stop() methods': {
           topic: function(child) {
             const that = this;
-            let timer;
 
-            timer = setTimeout(function() {
+            const timer = setTimeout(function() {
               that.callback(
                 new Error('Child did not die when killed by forever'),
                 child

@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/signal')
@@ -24,15 +24,14 @@ vows
                 '..',
                 'examples',
                 'signal-ignore.js'
-                ),
-                child = new fmonitor.Monitor(script, {
-                  silent: true,
-                  killTTL: 1000,
-                }),
-                callback = this.callback;
-            let timer;
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                killTTL: 1000,
+              }),
+              callback = this.callback;
 
-            timer = setTimeout(function() {
+            const timer = setTimeout(function() {
               callback(
                 new Error('Child did not die when killed by forever'),
                 child
@@ -73,15 +72,14 @@ vows
                 '..',
                 'examples',
                 'graceful-exit.js'
-                ),
-                child = new fmonitor.Monitor(script, {
-                  silent: true,
-                  killSignal: 'SIGTERM',
-                }),
-                callback = this.callback;
-            let timer;
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                killSignal: 'SIGTERM',
+              }),
+              callback = this.callback;
 
-            timer = setTimeout(function() {
+            const timer = setTimeout(function() {
               callback(
                 new Error('Child did not die when killed by forever'),
                 child

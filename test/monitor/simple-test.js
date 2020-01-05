@@ -7,10 +7,10 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib'),
-    macros = require('../helpers/macros');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib'),
+  macros = require('../helpers/macros');
 
 const examplesDir = path.join(__dirname, '..', '..', 'examples');
 
