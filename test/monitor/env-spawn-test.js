@@ -113,7 +113,6 @@ var assert = require('assert'),
         "should hide the environment variables passed to the child": function (err, child) {
           var that = this;
 
-          assert.equal(child.times, 1);
           this.hideEnv.forEach(function (key) {
             assert.isTrue(that.env.indexOf(key) === -1);
           });
