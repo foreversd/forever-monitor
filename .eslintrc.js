@@ -17,6 +17,7 @@ module.exports = {
     'prefer-const': 2,
     'no-fallthrough': 2,
     'require-atomic-updates': 0,
+    'no-useless-escape': 0
   },
   env: {
     node: true,
