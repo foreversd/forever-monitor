@@ -46,12 +46,12 @@ jobs:
     docker:
       - image: node:4
     steps:
-      - test-nodejs
+      - test-nodejs-old
   node-v6:
     docker:
       - image: node:6
     steps:
-      - test-nodejs
+      - test-nodejs-old
   node-v8:
     docker:
       - image: node:8
