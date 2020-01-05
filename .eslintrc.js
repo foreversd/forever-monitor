@@ -19,7 +19,8 @@ module.exports = {
     'no-useless-escape': 0,
     'no-unused-vars': 0,
     'no-var': 0, // ToDo
-    'no-redeclare': 0 // ToDo
+    'no-redeclare': 0, // ToDo
+    'prefer-const': 0
   },
   env: {
     node: true,

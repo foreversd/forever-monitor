@@ -1,4 +1,4 @@
-var util = require('util');
+const util = require('util');
 
 setTimeout(function() {
   util.puts('Throwing error now.');

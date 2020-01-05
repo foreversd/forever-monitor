@@ -6,10 +6,10 @@
  *
  */
 
-var assert = require('assert'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib');
+const assert = require('assert'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spin-restart')
@@ -18,18 +18,18 @@ vows
       'and spawning a script that spin restarts': {
         'with no spinSleepTime specified': {
           topic: function() {
-            var script = path.join(
+            const script = path.join(
                 __dirname,
                 '..',
                 '..',
                 'examples',
                 'always-throw.js'
-              ),
-              child = new fmonitor.Monitor(script, {
-                silent: true,
-                minUptime: 2000,
-                max: 3,
-              });
+                ),
+                child = new fmonitor.Monitor(script, {
+                  silent: true,
+                  minUptime: 2000,
+                  max: 3,
+                });
 
             child.on('exit', this.callback.bind({}, null));
             child.start();
@@ -51,18 +51,18 @@ vows
         },
         'with a spinSleepTime specified': {
           topic: function() {
-            var script = path.join(
+            const script = path.join(
                 __dirname,
                 '..',
                 '..',
                 'examples',
                 'always-throw.js'
-              ),
-              child = new fmonitor.Monitor(script, {
-                silent: true,
-                max: 3,
-                spinSleepTime: 1,
-              });
+                ),
+                child = new fmonitor.Monitor(script, {
+                  silent: true,
+                  max: 3,
+                  spinSleepTime: 1,
+                });
 
             child.on('exit', this.callback.bind({}, null));
             child.start();

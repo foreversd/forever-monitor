@@ -1,14 +1,14 @@
-var assert = require('assert'),
-  fs = require('fs'),
-  path = require('path'),
-  vows = require('vows'),
-  fmonitor = require('../../lib');
+const assert = require('assert'),
+    fs = require('fs'),
+    path = require('path'),
+    vows = require('vows'),
+    fmonitor = require('../../lib');
 
-var fixturesDir = path.join(__dirname, '..', 'fixtures');
+const fixturesDir = path.join(__dirname, '..', 'fixtures');
 
 function checkLogOutput(file, stream, expectedLength) {
-  var output = fs.readFileSync(path.join(fixturesDir, file), 'utf8'),
-    lines = output.split('\n').slice(0, -1);
+  const output = fs.readFileSync(path.join(fixturesDir, file), 'utf8'),
+      lines = output.split('\n').slice(0, -1);
 
   assert.equal(lines.length, expectedLength);
   lines.forEach(function(line, i) {
@@ -22,10 +22,10 @@ vows
     'When using the logger plugin': {
       'with custom log files': {
         topic: function() {
-          var that = this,
-            outlogs,
-            errlogs,
-            monitor;
+          const that = this;
+          let outlogs,
+              errlogs,
+              monitor;
 
           monitor = new fmonitor.Monitor(path.join(fixturesDir, 'logs.js'), {
             max: 1,
@@ -46,14 +46,14 @@ vows
       },
       'with custom log files and a process that exits': {
         topic: function() {
-          var monitor = new fmonitor.Monitor(
-            path.join(fixturesDir, 'logs.js'),
-            {
-              max: 5,
-              silent: true,
-              outFile: path.join(fixturesDir, 'logs-stdout-2.log'),
-              errFile: path.join(fixturesDir, 'logs-stderr-2.log'),
-            }
+          const monitor = new fmonitor.Monitor(
+              path.join(fixturesDir, 'logs.js'),
+              {
+                max: 5,
+                silent: true,
+                outFile: path.join(fixturesDir, 'logs-stdout-2.log'),
+                errFile: path.join(fixturesDir, 'logs-stderr-2.log'),
+              }
           );
 
           monitor.on('exit', this.callback.bind({}, null));
@@ -70,15 +70,15 @@ vows
     'When using the logger plugin': {
       'with custom log files and the append option set': {
         topic: function() {
-          var monitor = new fmonitor.Monitor(
-            path.join(fixturesDir, 'logs.js'),
-            {
-              max: 3,
-              silent: true,
-              append: true,
-              outFile: path.join(fixturesDir, 'logs-stdout.log'),
-              errFile: path.join(fixturesDir, 'logs-stderr.log'),
-            }
+          const monitor = new fmonitor.Monitor(
+              path.join(fixturesDir, 'logs.js'),
+              {
+                max: 3,
+                silent: true,
+                append: true,
+                outFile: path.join(fixturesDir, 'logs-stdout.log'),
+                errFile: path.join(fixturesDir, 'logs-stderr.log'),
+              }
           );
 
           monitor.on('exit', this.callback.bind({}, null));
