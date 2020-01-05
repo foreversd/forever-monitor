@@ -7,14 +7,16 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    fs = require('fs'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  fs = require('fs'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
-const watchDir = fs.realpathSync(path.join(__dirname, '..', 'fixtures', 'watch'));
+const watchDir = fs.realpathSync(
+  path.join(__dirname, '..', 'fixtures', 'watch')
+);
 const watchDirToo = fs.realpathSync(
-    path.join(__dirname, '..', 'fixtures', 'watch_too')
+  path.join(__dirname, '..', 'fixtures', 'watch_too')
 );
 let monitor;
 

@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spin-restart')
@@ -24,12 +24,12 @@ vows
                 '..',
                 'examples',
                 'always-throw.js'
-                ),
-                child = new fmonitor.Monitor(script, {
-                  silent: true,
-                  minUptime: 2000,
-                  max: 3,
-                });
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                minUptime: 2000,
+                max: 3,
+              });
 
             child.on('exit', this.callback.bind({}, null));
             child.start();
@@ -57,12 +57,12 @@ vows
                 '..',
                 'examples',
                 'always-throw.js'
-                ),
-                child = new fmonitor.Monitor(script, {
-                  silent: true,
-                  max: 3,
-                  spinSleepTime: 1,
-                });
+              ),
+              child = new fmonitor.Monitor(script, {
+                silent: true,
+                max: 3,
+                spinSleepTime: 1,
+              });
 
             child.on('exit', this.callback.bind({}, null));
             child.start();

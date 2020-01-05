@@ -1,6 +1,6 @@
 const path = require('path'),
-    async = require('utile').async,
-    forever = require('../lib/forever');
+  async = require('utile').async,
+  forever = require('../lib/forever');
 
 function startServer(port, next) {
   const child = new forever.Monitor(script, {

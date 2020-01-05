@@ -18,9 +18,7 @@ module.exports = {
     'require-atomic-updates': 0,
     'no-useless-escape': 0,
     'no-unused-vars': 0,
-    'no-var': 0, // ToDo
-    'no-redeclare': 0, // ToDo
-    'prefer-const': 0
+    'no-var': 0 // ToDo
   },
   env: {
     node: true,

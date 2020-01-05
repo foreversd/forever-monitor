@@ -7,9 +7,9 @@
  */
 
 const assert = require('assert'),
-    path = require('path'),
-    vows = require('vows'),
-    fmonitor = require('../../lib');
+  path = require('path'),
+  vows = require('vows'),
+  fmonitor = require('../../lib');
 
 vows
   .describe('forever-monitor/monitor/spawn-options')
@@ -19,14 +19,13 @@ vows
         'passing environment variables to env-vars.js': {
           topic: function() {
             const that = this;
-            let child;
 
             this.env = {
               FOO: 'foo',
               BAR: 'bar',
             };
 
-            child = new fmonitor.Monitor(
+            const child = new fmonitor.Monitor(
               path.join(__dirname, '..', '..', 'examples', 'env-vars.js'),
               {
                 max: 1,
@@ -54,11 +53,9 @@ vows
         'passing a custom cwd to custom-cwd.js': {
           topic: function() {
             const that = this;
-            let child;
-
             this.cwd = path.join(__dirname, '..');
 
-            child = new fmonitor.Monitor(
+            const child = new fmonitor.Monitor(
               path.join(__dirname, '..', '..', 'examples', 'custom-cwd.js'),
               {
                 max: 1,
@@ -87,8 +84,7 @@ vows
           topic: function() {
             const that = this;
             let all = '',
-                confirmed,
-                child;
+              confirmed;
 
             this.hideEnv = ['USER', 'OLDPWD'];
 
@@ -104,7 +100,7 @@ vows
               confirmed = true;
             }
 
-            child = new fmonitor.Monitor(
+            const child = new fmonitor.Monitor(
               path.join(__dirname, '..', '..', 'examples', 'all-env-vars.js'),
               {
                 max: 1,
