@@ -3,7 +3,7 @@
 The core monitoring functionality of forever without the CLI
 
 ## Usage
-You can also use forever from inside your own node.js code.
+You can also use forever from inside your own Node.js code.
 
 ``` js
   var forever = require('forever-monitor');
@@ -113,7 +113,7 @@ There are several options that you should be aware of when using forever. Most o
 ```
 
 ### Events available when using an instance of Forever in node.js
-Each forever object is an instance of the node.js core EventEmitter. There are several core events that you can listen for:
+Each forever object is an instance of the Node.js core EventEmitter. There are several core events that you can listen for:
 
 * **error**   _[err]:_             Raised when an error occurs
 * **start**   _[process, data]:_   Raised when the target script is first started.
