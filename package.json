@@ -51,11 +51,16 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "test": "vows test/**/*-test.js --spec -i",
+    "test": "vows test/**/*-test.js --dot-matrix -i",
     "test:ci": "npm run test"
   },
-  "license": "MIT",
   "engines": {
     "node": ">= 0.8.x"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/*"
+  ],
+  "license": "MIT"
 }
