@@ -1,8 +1,8 @@
-var util = require('util');
+const util = require('util');
 
-var count = 0;
+let count = 0;
 
-var id = setInterval(function () {
+const id = setInterval(function() {
   util.puts('Count is ' + count + '. Incrementing now.');
   count++;
 }, 1000);

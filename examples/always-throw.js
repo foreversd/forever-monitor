@@ -1,1 +1,1 @@
-throw new Error('Dont spin restart')
+throw new Error('Dont spin restart');

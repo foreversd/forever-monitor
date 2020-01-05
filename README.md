@@ -3,7 +3,7 @@
 The core monitoring functionality of forever without the CLI
 
 ## Usage
-You can also use forever from inside your own node.js code.
+You can also use forever from inside your own Node.js code.
 
 ``` js
   var forever = require('forever-monitor');
@@ -68,7 +68,7 @@ There are several options that you should be aware of when using forever. Most o
     'watch': true,               // Value indicating if we should watch files.
     'watchIgnoreDotFiles': null, // Whether to ignore file starting with a '.'
     'watchIgnorePatterns': null, // Ignore patterns to use when watching files.
-    'watchDirectory': null,      // Top-level directory to watch from.
+    'watchDirectory': null,      // Top-level directory to watch from. You can provide multiple watchDirectory options to watch multiple directories (e.g. for cli: forever start -w='app' -w='some_other_directory' app\index.js)
 
     //
     // All or nothing options passed along to `child_process.spawn`.
@@ -113,7 +113,7 @@ There are several options that you should be aware of when using forever. Most o
 ```
 
 ### Events available when using an instance of Forever in node.js
-Each forever object is an instance of the node.js core EventEmitter. There are several core events that you can listen for:
+Each forever object is an instance of the Node.js core EventEmitter. There are several core events that you can listen for:
 
 * **error**   _[err]:_             Raised when an error occurs
 * **start**   _[process, data]:_   Raised when the target script is first started.
@@ -128,10 +128,10 @@ Each forever object is an instance of the node.js core EventEmitter. There are s
 When running the forever CLI tool, it produces debug outputs about which files have changed / how processes exited / etc. To get a similar behaviour with `forever-monitor`, add the following event listeners:
 
 ```js
-var child = new (forever.Monitor)('your-filename.js');
+const child = new (forever.Monitor)('your-filename.js');
 
 child.on('watch:restart', function(info) {
-    console.error('Restaring script because ' + info.file + ' changed');
+    console.error('Restarting script because ' + info.file + ' changed');
 });
 
 child.on('restart', function() {
