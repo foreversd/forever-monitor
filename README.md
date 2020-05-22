@@ -3,7 +3,7 @@
 The core monitoring functionality of forever without the CLI
 
 ## Usage
-You can also use forever from inside your own Node.js code.
+You can also use forever from inside your own Node.js code:
 
 ``` js
   var forever = require('forever-monitor');
@@ -76,8 +76,9 @@ There are several options that you should be aware of when using forever. Most o
     'spawnWith': {
       customFds: [-1, -1, -1], // that forever spawns.
       setsid: false,
-      uid: 0, // Custom UID
-      gid: 0  // Custom GID
+      uid: 0,      // Custom UID
+      gid: 0,      // Custom GID
+      shell: false // Windows only - makes forever spawn in a shell
     },
 
     //
