@@ -46,7 +46,6 @@ There are several options that you should be aware of when using forever. Most o
     'pidFile': 'path/to/a.pid', // Path to put pid information for the process(es) started
     'max': 10,                  // Sets the maximum number of times a given script should run
     'killTree': true,           // Kills the entire child process tree on `exit`
-    'spawnWithShell': false     // Windows only: start forever process with a shell
 
     //
     // These options control how quickly forever restarts a child process
