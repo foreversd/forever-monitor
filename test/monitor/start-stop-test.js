@@ -65,7 +65,7 @@ vows
                   }, 2000);
                 });
               }, 2000);
-            }, 1000);
+            }, 2000);
           },
           'should restart the child process': function(err, child) {
             assert.isNull(err);
