@@ -42,7 +42,7 @@ vows
 
             // FixMe this fails on Node 12+
             if (semver.gte(process.version, '12.0.0')) {
-              that.callback();
+              that.callback(null, { running: false });
             }
 
             const timer = setTimeout(function() {
