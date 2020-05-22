@@ -3,7 +3,7 @@
 The core monitoring functionality of forever without the CLI
 
 ## Usage
-You can also use forever from inside your own Node.js code.
+You can also use forever from inside your own Node.js code:
 
 ``` js
   var forever = require('forever-monitor');
