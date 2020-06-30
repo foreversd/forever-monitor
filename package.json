@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/nodejitsu/forever-monitor.git"
+    "url": "http://github.com/foreversd/forever-monitor.git"
   },
   "keywords": [
     "fault tolerant",
