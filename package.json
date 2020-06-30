@@ -53,7 +53,7 @@
     "broadway": "~0.3.6",
     "chokidar": "^2.1.8",
     "minimatch": "^3.0.4",
-    "ps-tree": "0.0.x",
+    "ps-tree": "^1.2.0",
     "utile": "^0.3.0"
   },
   "devDependencies": {
