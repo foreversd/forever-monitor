@@ -1,7 +1,7 @@
 {
   "name": "forever-monitor",
   "description": "Core forever process monitor",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
     {
