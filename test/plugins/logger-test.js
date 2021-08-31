@@ -159,9 +159,7 @@ vows
 
           monitor.start();
 
-          monitor.on('exit', ()=> {
-            this.callback.bind({},null)();
-          });
+          monitor.on('exit', this.callback.bind({},null));
         },
         'piped log strings should not be truncated': function (err) {
           checkLogArrayOutput(logArrays.stdoutLog.split("\n").filter(Boolean), 'stdout', 30);
