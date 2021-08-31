@@ -23,7 +23,7 @@ vows
         topic: new fmonitor.Monitor(path.join(examplesDir, 'server.js'), {
           max: 10,
           silent: true,
-          options: ['-p', 8090],
+          args: ['-p', 8090],
           logFile: './main.log',
           outFile: './out.log',
           errFile: './err.log',
