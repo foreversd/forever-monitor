@@ -31,14 +31,19 @@ vows
                 fork: true,
               });
 
-            child.on('message', this.callback.bind(null, null));
+            const timeout = setTimeout(this.callback.bind(new Error("TIMEOUT"), null), 5000);
+            child.on('message', (msg)=> {
+              clearTimeout(timeout);
+              child.kill();
+              this.callback.bind(null, null)(msg);
+            });
             child.start();
             child.send({ from: 'parent' });
           },
           'should reemit the message correctly': function(err, msg) {
             assert.isObject(msg);
-            assert.deepEqual(msg, { message: { from: 'parent' }, pong: true });
-          },
+            assert.deepStrictEqual(msg, { message: { from: 'parent' }, pong: true });
+          }
         },
       },
     },

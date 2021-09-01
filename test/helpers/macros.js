@@ -21,13 +21,13 @@ macros.assertTimes = function(script, times, options) {
       child.start();
     },
     "should emit 'exit' when completed": function(err, child) {
-      assert.equal(child.times, times);
+      assert.strictEqual(child.times, times);
     },
   };
 };
 
 macros.assertStartsWith = function(string, substring) {
-  assert.equal(string.slice(0, substring.length), substring);
+  assert.strictEqual(string.slice(0, substring.length), substring);
 };
 
 macros.assertList = function(list) {

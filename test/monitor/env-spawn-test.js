@@ -46,8 +46,8 @@ vows
             err,
             child
           ) {
-            assert.equal(child.times, 1);
-            assert.equal(this.stdout, JSON.stringify(this.env));
+            assert.strictEqual(child.times, 1);
+            assert.strictEqual(this.stdout, JSON.stringify(this.env));
           },
         },
         'passing a custom cwd to custom-cwd.js': {
@@ -76,8 +76,8 @@ vows
             err,
             child
           ) {
-            assert.equal(child.times, 1);
-            assert.equal(this.stdout, this.cwd);
+            assert.strictEqual(child.times, 1);
+            assert.strictEqual(this.stdout, this.cwd);
           },
         },
         'setting `hideEnv` when spawning all-env-vars.js': {

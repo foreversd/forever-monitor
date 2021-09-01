@@ -24,24 +24,24 @@ vows
           silent: true,
           args: ['-p', 8090],
         }),
-        'should have correct properties set': function(child) {
+        'should have correct properties set': function (child) {
           assert.isArray(child.args);
-          assert.equal(child.max, 10);
+          assert.strictEqual(child.max, 10);
           assert.isTrue(child.silent);
           assert.isFunction(child.start);
           assert.isObject(child.data);
           assert.isFunction(child.stop);
         },
         'calling the restart() method in less than `minUptime`': {
-          topic: function(child) {
+          topic: function (child) {
             const that = this;
-            child.once('start', function() {
+            child.once('start', function () {
               child.once('restart', that.callback.bind(this, null));
               child.restart();
             });
             child.start();
           },
-          'should restart the child process': function(_, child, data) {
+          'should restart the child process': function (_, child, data) {
             assert.isObject(data);
             child.kill(true);
           },
@@ -70,23 +70,22 @@ vows
         }
       ),
       'non-node usage with a perl one-liner': {
-        topic: function() {
+        topic: function () {
           const child = fmonitor.start(['perl', '-le', 'print "moo"'], {
             max: 1,
             silent: true,
             debug: {
-              loglevel: 0,
               prefix: "[PERL %%]"
             }
           });
           child.on('stdout', this.callback.bind({}, null));
         },
-        'should get back moo': function(err, buf) {
-          assert.equal(buf.toString(), 'moo\n');
+        'should get back moo': function (err, buf) {
+          assert.strictEqual(buf.toString(), 'moo\n');
         },
       },
       'passing node flags through command': {
-        topic: function() {
+        topic: function () {
           const child = fmonitor.start('test/fixtures/gc.js', {
             command: 'node --expose-gc',
             max: 1,
@@ -94,37 +93,29 @@ vows
           });
           child.on('stdout', this.callback.bind({}, null));
         },
-        'should get back function': function(err, buf) {
+        'should get back function': function (err, buf) {
           assert.isNull(err);
-          assert.equal('' + buf, 'function\n');
+          assert.strictEqual('' + buf, 'function\n');
         },
       },
       "attempting to start a script that doesn't exist": {
-        topic: function() {
+        topic: function () {
 
-          try {
-            const child = fmonitor.start('invalid-path.js', {
-              max: 1,
-              silent: true,
-            });
-  
-            child.on("error", (err) => this.callback.bind({}, null)(err))
+          const child = fmonitor.start('invalid-path.js', {
+            max: 1,
+            silent: true,
+          });
 
-          } catch(err) {
-            // expected behaviour
-          }
-          
-
-          setTimeout(this.callback.bind({},new Error("TIMEOUT")), 5000);
+          child.on("error", (err) => this.callback({},err))
         },
-        'should throw an error about the invalid file': function(err) {
-          assert.isNotNull(err);
-          assert.isTrue(err.message.indexOf('does not exist') !== -1);
+        'should throw an error about the invalid file': function (err, expectedErr) {
+          assert.isNotNull(expectedErr);
+          assert.isTrue(expectedErr.message.indexOf('does not exist') !== -1);
         },
       },
       'attempting to start a command with `node` in the name': {
-        topic: function() {
-          if(process.platform == 'win32') {
+        topic: function () {
+          if (process.platform == 'win32') {
             return 'sample-script.js';
           }
           const child = fmonitor.start('sample-script.js', {
@@ -136,11 +127,11 @@ vows
             }
           });
           child.on('stdout', this.callback.bind({}, null));
-          setTimeout(this.callback.bind({},new Error("TIMEOUT")), 5000);
+
         },
-        'should run the script': function(err, buf) {
+        'should run the script': function (err, buf) {
           assert.isNull(err);
-          assert.equal('' + buf, 'sample-script.js');
+          assert.strictEqual('' + buf, 'sample-script.js');
         },
       },
     },

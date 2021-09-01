@@ -46,7 +46,7 @@ vows
             child,
             spinning
           ) {
-            assert.equal(child.times, 1);
+            assert.strictEqual(child.times, 1);
           },
         },
         'with a spinSleepTime specified': {
@@ -68,7 +68,7 @@ vows
             child.start();
           },
           'should restart spinning processes': function(err, child, spinning) {
-            assert.equal(child.times, 3);
+            assert.strictEqual(child.times, 3);
           },
         },
       },

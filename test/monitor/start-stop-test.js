@@ -30,7 +30,7 @@ vows
         }),
         'should have correct properties set': function(child) {
           assert.isArray(child.args);
-          assert.equal(child.max, 10);
+          assert.strictEqual(child.max, 10);
           assert.isTrue(child.silent);
           assert.isFunction(child.start);
           assert.isObject(child.data);

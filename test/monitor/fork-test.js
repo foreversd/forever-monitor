@@ -31,7 +31,7 @@ vows
           },
           'should reemit the message correctly': function(err, msg) {
             assert.isObject(msg);
-            assert.deepEqual(msg, { from: 'child' });
+            assert.deepStrictEqual(msg, { from: 'child' });
           },
         },
       },
@@ -55,7 +55,7 @@ vows
         },
         'should reemit the message correctly': function(err, msg) {
           assert.isObject(msg);
-          assert.deepEqual(msg, { from: 'child' });
+          assert.deepStrictEqual(msg, { from: 'child' });
         },
       },
     },
