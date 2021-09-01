@@ -36,7 +36,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" \"examples/**/*.js\"",
-    "test": "vows test/**/*-test.js --dot-matrix -i",
+    "test": "vows test/**/*-test.js --spec -i",
     "test:ci": "npm run lint && npm run test",
     "prettier": "prettier --write \"{lib,examples,test}/**/*.js\""
   },
