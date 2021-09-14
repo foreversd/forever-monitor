@@ -1,4 +1,4 @@
-# forever-monitor [![Build Status](https://secure.travis-ci.org/foreverjs/forever-monitor.png)](http://travis-ci.org/foreverjs/forever-monitor)
+# forever-monitor [![CircleCI](https://circleci.com/gh/lacrioque/forever-monitor/tree/master.svg?style=svg)](https://circleci.com/gh/lacrioque/forever-monitor/tree/master)
 
 The core monitoring functionality of forever without the CLI
 
