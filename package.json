@@ -36,7 +36,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" \"examples/**/*.js\"",
-    "test": "vows test/**/*-test.js --dot-matrix -i",
+    "test": "vows test/**/*-test.js --spec -i",
     "test:ci": "npm run lint && npm run test",
     "prettier": "prettier --write \"{lib,examples,test}/**/*.js\""
   },
@@ -51,22 +51,22 @@
   ],
   "dependencies": {
     "async": "^1.5.2",
-    "chokidar": "^2.1.8",
+    "chokidar": "^3.1.8",
     "eventemitter2": "^6.4.3",
     "minimatch": "^3.0.4",
     "ps-tree": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-config-prettier": "^6.11.0",
-    "prettier": "^1.19.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7",
+    "eslint-plugin-prettier": "^4",
+    "prettier": "^2",
     "semver": "5.7.1",
-    "vows": "0.7.0",
+    "vows": "^0.9.0-rc3",
     "yargs": "^3.32.0"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "files": [
     "LICENSE",

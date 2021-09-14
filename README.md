@@ -1,4 +1,4 @@
-# forever-monitor [![Build Status](https://secure.travis-ci.org/foreverjs/forever-monitor.png)](http://travis-ci.org/foreverjs/forever-monitor)
+# forever-monitor [![CircleCI](https://circleci.com/gh/lacrioque/forever-monitor/tree/master.svg?style=svg)](https://circleci.com/gh/lacrioque/forever-monitor/tree/master)
 
 The core monitoring functionality of forever without the CLI
 
@@ -94,6 +94,21 @@ There are several options that you should be aware of when using forever. Most o
     'logFile': 'path/to/file', // Path to log output from forever process (when daemonized)
     'outFile': 'path/to/file', // Path to log output from child stdout
     'errFile': 'path/to/file', // Path to log output from child stderr
+
+    // 
+    // Custom eventing options
+    //
+    "stdoutEventName" : "stdout" // This event will be fired on every child_process.on("stdout")
+    "stderrEventName" : "stderr" // This event will be fired on every child_process.on("stderr")
+
+
+    //
+    // Debug options to have a more refined debuggable logging
+    //
+    "debug": {
+      "prefix": "[DBG -%%-]" // %% will be replaced by the function (debug/log/warn/error)
+      "loglevel": 4 // 4 -> silent, 3 -> only error, 2-> error and warning 1-> error,warning,log, 0 -> everything
+    }
 
     //
     // ### function parseCommand (command, args)
