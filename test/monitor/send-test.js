@@ -34,7 +34,7 @@ vows
             const timeout = setTimeout(this.callback.bind(new Error("TIMEOUT"), null), 5000);
             child.on('message', (msg)=> {
               clearTimeout(timeout);
-              child.kill();
+              child.stop();
               this.callback.bind(null, null)(msg);
             });
             child.start();
