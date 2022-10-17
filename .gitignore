@@ -18,4 +18,3 @@ test/*.log
 .*.sw[op]
 test/fixtures/*.log
 .idea
-package-lock.json
